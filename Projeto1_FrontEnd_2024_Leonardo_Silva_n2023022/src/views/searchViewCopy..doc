@@ -1,0 +1,27 @@
+<!-- <template>
+    {{ carrinho }}
+    <br>
+    <input type="text" v-model="pesquisa">
+    <button @click="getMeal(pesquisa)">search</button>
+    <div style="display: flex; flex-wrap: wrap; gap:10px; ">
+        <div v-for="item in meal" style="display:flex; padding:5px; background-color: light ;">
+            <img :src="item.strMealThumb" alt="" width="75">
+            {{ item.strMeal }}
+            <button @click="() => carrinho.push(item.strMeal)">carrinho</button>
+        </div>
+    </div>
+    {{ meal }}
+</template>
+
+<script setup>
+import { ref } from 'vue';
+const meal = ref([]);
+const pesquisa = ref('Beef')
+const carrinho = ref([1,2,3])
+
+const getMeal = (parametro) => {
+    fetch('http//www.themealdb.com/api/json/v1/1/search.php?s=' + parametro)
+    .then(dados => dados.json())
+    .then(resultado => meal.value = resultado.meals)
+}
+</script>
